@@ -13,6 +13,16 @@
 		FB41120424A52DC200780502 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB41120224A52DC200780502 /* Main.storyboard */; };
 		FB41120624A52DC400780502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB41120524A52DC400780502 /* Assets.xcassets */; };
 		FB41120924A52DC400780502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB41120724A52DC400780502 /* LaunchScreen.storyboard */; };
+		FB41121624A536BD00780502 /* Alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = FB41121524A536BD00780502 /* Alarm.png */; };
+		FB41121824A536C800780502 /* WorldClock.png in Resources */ = {isa = PBXBuildFile; fileRef = FB41121724A536C800780502 /* WorldClock.png */; };
+		FB41121B24A536D600780502 /* Timer.png in Resources */ = {isa = PBXBuildFile; fileRef = FB41121924A536D600780502 /* Timer.png */; };
+		FB41121C24A536D600780502 /* StopWatch.png in Resources */ = {isa = PBXBuildFile; fileRef = FB41121A24A536D600780502 /* StopWatch.png */; };
+		FB41121E24A53DCD00780502 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41121D24A53DCD00780502 /* AlarmViewController.swift */; };
+		FB41122024A542C400780502 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41121F24A542C400780502 /* AlarmTableViewCell.swift */; };
+		FB41122424A5CC2200780502 /* AlarmItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41122324A5CC2200780502 /* AlarmItem.swift */; };
+		FB41122624A5CEF400780502 /* AlarmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41122524A5CEF400780502 /* AlarmData.swift */; };
+		FB41122824A5E17000780502 /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41122724A5E17000780502 /* AddAlarmViewController.swift */; };
+		FB41122B24A643B200780502 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FB41122A24A643B200780502 /* libsqlite3.0.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +34,16 @@
 		FB41120524A52DC400780502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB41120824A52DC400780502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB41120A24A52DC400780502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB41121524A536BD00780502 /* Alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alarm.png; sourceTree = "<group>"; };
+		FB41121724A536C800780502 /* WorldClock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WorldClock.png; sourceTree = "<group>"; };
+		FB41121924A536D600780502 /* Timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Timer.png; sourceTree = "<group>"; };
+		FB41121A24A536D600780502 /* StopWatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopWatch.png; sourceTree = "<group>"; };
+		FB41121D24A53DCD00780502 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
+		FB41121F24A542C400780502 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		FB41122324A5CC2200780502 /* AlarmItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmItem.swift; sourceTree = "<group>"; };
+		FB41122524A5CEF400780502 /* AlarmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmData.swift; sourceTree = "<group>"; };
+		FB41122724A5E17000780502 /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
+		FB41122A24A643B200780502 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB41122B24A643B200780502 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +63,7 @@
 			children = (
 				FB4111FB24A52DC200780502 /* Alarm */,
 				FB4111FA24A52DC200780502 /* Products */,
+				FB41122924A643B200780502 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +78,72 @@
 		FB4111FB24A52DC200780502 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				FB4111FC24A52DC200780502 /* AppDelegate.swift */,
-				FB4111FE24A52DC200780502 /* SceneDelegate.swift */,
-				FB41120024A52DC200780502 /* ViewController.swift */,
-				FB41120224A52DC200780502 /* Main.storyboard */,
-				FB41120524A52DC400780502 /* Assets.xcassets */,
-				FB41120724A52DC400780502 /* LaunchScreen.storyboard */,
+				FB41121424A52E3000780502 /* Resources */,
+				FB41121324A52E1400780502 /* Model */,
+				FB41121224A52E0F00780502 /* Controller */,
+				FB41121124A52E0400780502 /* View */,
+				FB41121024A52DFA00780502 /* AppDelegate */,
 				FB41120A24A52DC400780502 /* Info.plist */,
 			);
 			path = Alarm;
+			sourceTree = "<group>";
+		};
+		FB41121024A52DFA00780502 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FB4111FE24A52DC200780502 /* SceneDelegate.swift */,
+				FB4111FC24A52DC200780502 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		FB41121124A52E0400780502 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FB41120724A52DC400780502 /* LaunchScreen.storyboard */,
+				FB41120224A52DC200780502 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FB41121224A52E0F00780502 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FB41121D24A53DCD00780502 /* AlarmViewController.swift */,
+				FB41120024A52DC200780502 /* ViewController.swift */,
+				FB41121F24A542C400780502 /* AlarmTableViewCell.swift */,
+				FB41122724A5E17000780502 /* AddAlarmViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FB41121324A52E1400780502 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FB41122324A5CC2200780502 /* AlarmItem.swift */,
+				FB41122524A5CEF400780502 /* AlarmData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FB41121424A52E3000780502 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FB41121724A536C800780502 /* WorldClock.png */,
+				FB41121A24A536D600780502 /* StopWatch.png */,
+				FB41121924A536D600780502 /* Timer.png */,
+				FB41121524A536BD00780502 /* Alarm.png */,
+				FB41120524A52DC400780502 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FB41122924A643B200780502 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB41122A24A643B200780502 /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +205,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB41120924A52DC400780502 /* LaunchScreen.storyboard in Resources */,
+				FB41121C24A536D600780502 /* StopWatch.png in Resources */,
+				FB41121624A536BD00780502 /* Alarm.png in Resources */,
 				FB41120624A52DC400780502 /* Assets.xcassets in Resources */,
+				FB41121824A536C800780502 /* WorldClock.png in Resources */,
+				FB41121B24A536D600780502 /* Timer.png in Resources */,
 				FB41120424A52DC200780502 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +221,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB41122424A5CC2200780502 /* AlarmItem.swift in Sources */,
+				FB41122024A542C400780502 /* AlarmTableViewCell.swift in Sources */,
+				FB41121E24A53DCD00780502 /* AlarmViewController.swift in Sources */,
 				FB41120124A52DC200780502 /* ViewController.swift in Sources */,
+				FB41122824A5E17000780502 /* AddAlarmViewController.swift in Sources */,
 				FB4111FD24A52DC200780502 /* AppDelegate.swift in Sources */,
 				FB4111FF24A52DC200780502 /* SceneDelegate.swift in Sources */,
+				FB41122624A5CEF400780502 /* AlarmData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
