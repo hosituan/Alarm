@@ -13,10 +13,6 @@
 		FB41120424A52DC200780502 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB41120224A52DC200780502 /* Main.storyboard */; };
 		FB41120624A52DC400780502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB41120524A52DC400780502 /* Assets.xcassets */; };
 		FB41120924A52DC400780502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB41120724A52DC400780502 /* LaunchScreen.storyboard */; };
-		FB41121624A536BD00780502 /* Alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = FB41121524A536BD00780502 /* Alarm.png */; };
-		FB41121824A536C800780502 /* WorldClock.png in Resources */ = {isa = PBXBuildFile; fileRef = FB41121724A536C800780502 /* WorldClock.png */; };
-		FB41121B24A536D600780502 /* Timer.png in Resources */ = {isa = PBXBuildFile; fileRef = FB41121924A536D600780502 /* Timer.png */; };
-		FB41121C24A536D600780502 /* StopWatch.png in Resources */ = {isa = PBXBuildFile; fileRef = FB41121A24A536D600780502 /* StopWatch.png */; };
 		FB41121E24A53DCD00780502 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41121D24A53DCD00780502 /* AlarmViewController.swift */; };
 		FB41122024A542C400780502 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41121F24A542C400780502 /* AlarmTableViewCell.swift */; };
 		FB41122424A5CC2200780502 /* AlarmItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41122324A5CC2200780502 /* AlarmItem.swift */; };
@@ -24,7 +20,6 @@
 		FB41122824A5E17000780502 /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41122724A5E17000780502 /* AddAlarmViewController.swift */; };
 		FB41122E24A645B500780502 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB41122C24A645B500780502 /* Model.xcdatamodeld */; };
 		FB41125324A711C200780502 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41125224A711C200780502 /* DataManager.swift */; };
-		FB92016324A7960000B26284 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FB92016224A7960000B26284 /* AppIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +31,6 @@
 		FB41120524A52DC400780502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB41120824A52DC400780502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB41120A24A52DC400780502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB41121524A536BD00780502 /* Alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alarm.png; sourceTree = "<group>"; };
-		FB41121724A536C800780502 /* WorldClock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WorldClock.png; sourceTree = "<group>"; };
-		FB41121924A536D600780502 /* Timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Timer.png; sourceTree = "<group>"; };
-		FB41121A24A536D600780502 /* StopWatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopWatch.png; sourceTree = "<group>"; };
 		FB41121D24A53DCD00780502 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		FB41121F24A542C400780502 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		FB41122324A5CC2200780502 /* AlarmItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmItem.swift; sourceTree = "<group>"; };
@@ -48,7 +39,6 @@
 		FB41122A24A643B200780502 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		FB41122D24A645B500780502 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FB41125224A711C200780502 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		FB92016224A7960000B26284 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon.png; path = ../../../../Downloads/AppIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,11 +125,6 @@
 		FB41121424A52E3000780502 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FB92016224A7960000B26284 /* AppIcon.png */,
-				FB41121724A536C800780502 /* WorldClock.png */,
-				FB41121A24A536D600780502 /* StopWatch.png */,
-				FB41121924A536D600780502 /* Timer.png */,
-				FB41121524A536BD00780502 /* Alarm.png */,
 				FB41120524A52DC400780502 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -211,13 +196,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB92016324A7960000B26284 /* AppIcon.png in Resources */,
 				FB41120924A52DC400780502 /* LaunchScreen.storyboard in Resources */,
-				FB41121C24A536D600780502 /* StopWatch.png in Resources */,
-				FB41121624A536BD00780502 /* Alarm.png in Resources */,
 				FB41120624A52DC400780502 /* Assets.xcassets in Resources */,
-				FB41121824A536C800780502 /* WorldClock.png in Resources */,
-				FB41121B24A536D600780502 /* Timer.png in Resources */,
 				FB41120424A52DC200780502 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Alarm View Controller-->
+        <!--Alarm-->
         <scene sceneID="2pS-2s-RvK">
             <objects>
                 <viewController id="rnW-LL-iBi" customClass="AlarmViewController" customModule="Alarm" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,12 +77,7 @@
                             <outletCollection property="gestureRecognizers" destination="JL4-iZ-syX" appends="YES" id="ziC-EO-nXo"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="HlW-pJ-VfT">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="0YW-4f-AI2">
-                            <connections>
-                                <segue destination="fnB-Hx-KI8" kind="showDetail" identifier="editSegue" id="ZNp-oc-Jlv"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Alarm" id="HlW-pJ-VfT">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hix-jd-5Xi">
                             <connections>
                                 <segue destination="fnB-Hx-KI8" kind="showDetail" identifier="addSegue" id="LnK-QG-gcK"/>
@@ -96,7 +91,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OfQ-az-hSp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="JL4-iZ-syX"/>
             </objects>
-            <point key="canvasLocation" x="466.66666666666669" y="-389.0625"/>
+            <point key="canvasLocation" x="1376.8115942028987" y="-389.0625"/>
         </scene>
         <!--Add Alarm-->
         <scene sceneID="scb-pY-ck6">
@@ -159,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDg-MF-1KT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1398.5507246376812" y="-389.0625"/>
+            <point key="canvasLocation" x="2308.695652173913" y="-389.0625"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OOD-Mf-I0c">
@@ -172,7 +167,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="P8I-cP-ChT" kind="relationship" relationship="viewControllers" id="7eS-wL-vsf"/>
-                        <segue destination="Myp-Bn-Y4J" kind="relationship" relationship="viewControllers" id="oH4-i0-sgi"/>
+                        <segue destination="7r4-7R-4OP" kind="relationship" relationship="viewControllers" id="oH4-i0-sgi"/>
                         <segue destination="F86-fB-ZWu" kind="relationship" relationship="viewControllers" id="mxa-cb-WzB"/>
                     </connections>
                 </tabBarController>
@@ -180,7 +175,7 @@
             </objects>
             <point key="canvasLocation" x="-614" y="-1150"/>
         </scene>
-        <!--View Controller-->
+        <!--Stop Watch-->
         <scene sceneID="NzU-QA-jk2">
             <objects>
                 <viewController id="F86-fB-ZWu" sceneMemberID="viewController">
@@ -190,35 +185,59 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Imd-9P-TDk"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="pIJ-Fg-j27"/>
+                    <tabBarItem key="tabBarItem" title="Stop Watch" image="StopWatch.png" selectedImage="StopWatch.png" id="pIJ-Fg-j27"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bnw-ay-iIi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="277" y="-1163"/>
         </scene>
-        <!--View Controller-->
+        <!--World Clock-->
         <scene sceneID="RRW-yk-84x">
             <objects>
                 <viewController id="Myp-Bn-Y4J" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QCD-7R-gzX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xvw-Nx-7fo">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" id="NMs-yE-fjT">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NMs-yE-fjT" id="uwi-r9-aNs">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Xvw-Nx-7fo" firstAttribute="top" secondItem="DSl-qB-K8k" secondAttribute="top" id="SPT-bO-kiY"/>
+                            <constraint firstItem="Xvw-Nx-7fo" firstAttribute="centerX" secondItem="QCD-7R-gzX" secondAttribute="centerX" id="Y66-b9-muC"/>
+                            <constraint firstItem="Xvw-Nx-7fo" firstAttribute="bottom" secondItem="DSl-qB-K8k" secondAttribute="bottom" id="YyE-Qy-bMv"/>
+                            <constraint firstItem="Xvw-Nx-7fo" firstAttribute="leading" secondItem="DSl-qB-K8k" secondAttribute="leading" id="fgG-BM-hlu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DSl-qB-K8k"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="downloads" id="gTI-BJ-Z43"/>
+                    <navigationItem key="navigationItem" title="World Clock" id="NRb-lk-NH6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="014-EB-9Ro"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6AA-Oi-qLX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1404" y="-389"/>
+            <point key="canvasLocation" x="-507.24637681159425" y="-399.10714285714283"/>
         </scene>
         <!--Alarm-->
         <scene sceneID="WNG-Go-ehC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P8I-cP-ChT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Alarm" image="clock.fill" catalog="system" selectedImage="clock.fill" id="DZn-5h-YZZ"/>
+                    <tabBarItem key="tabBarItem" title="Alarm" image="Alarm.png" selectedImage="Alarm.png" id="DZn-5h-YZZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lH5-nX-59F">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -231,13 +250,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPa-SU-aFY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-420" y="-399"/>
+            <point key="canvasLocation" x="489.85507246376818" y="-399.10714285714283"/>
+        </scene>
+        <!--World Clock-->
+        <scene sceneID="uEY-eN-Hdf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7r4-7R-4OP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="World Clock" image="WorldClock.png" selectedImage="WorldClock.png" id="gTI-BJ-Z43" userLabel="World Clock"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="a4M-VX-wqI">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Myp-Bn-Y4J" kind="relationship" relationship="rootViewController" id="ipm-uI-Puk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4TB-tG-De7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1417.3913043478262" y="-399.10714285714283"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="ZNp-oc-Jlv"/>
-    </inferredMetricsTieBreakers>
     <resources>
-        <image name="clock.fill" catalog="system" width="128" height="121"/>
+        <image name="Alarm.png" width="128" height="128"/>
+        <image name="StopWatch.png" width="128" height="128"/>
+        <image name="WorldClock.png" width="50" height="50"/>
     </resources>
 </document>
