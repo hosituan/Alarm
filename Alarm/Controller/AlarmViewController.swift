@@ -16,8 +16,17 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return alarms.count
     }
     
-    @IBAction func editButton(_ sender: UIBarButtonItem) {
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     if (segue.identifier == "editSegue") {
+        let vc = segue.destination as! AddAlarmViewController
+        vc.titleNav = "Edit Alarm"
+     }
+    if (segue.identifier == "addSegue") {
+       let vc = segue.destination as! AddAlarmViewController
+       vc.titleNav = "Add Alarm"
     }
+
+ }
     
     @IBAction func changedSwitch(_ sender: Any) {
         guard let cell = (sender as AnyObject).superview?.superview as? AlarmTableViewCell else {

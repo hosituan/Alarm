@@ -13,7 +13,9 @@ class AddAlarmViewController: UIViewController {
     let dateFormater: DateFormatter = DateFormatter()
     var allAlarm = AlarmData()
     var alarms: [NSManagedObject] = []
+    var titleNav: String = ""
 
+    @IBOutlet var navAdd: UINavigationItem!
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -26,6 +28,7 @@ class AddAlarmViewController: UIViewController {
         DataManager.shared.firstVC.tableView.reloadData()
         self.dismiss(animated: true, completion: nil)
         
+        
     }
     @IBOutlet var timePicker: UIDatePicker!
 
@@ -33,6 +36,7 @@ class AddAlarmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dateFormater.timeStyle = .short
+        navAdd.title = titleNav
         
         //let selectedDate: String = dateFormater.string(from: timePicker.calendar)
         // Do any additional setup after loading the view.
@@ -40,6 +44,11 @@ class AddAlarmViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        
+    }
+    func editShow()
+    {
+        navAdd.title = "abc"
     }
     func save(time: String, type: String, active: Bool) {
       

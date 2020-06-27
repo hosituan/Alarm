@@ -80,12 +80,12 @@
                     <navigationItem key="navigationItem" id="HlW-pJ-VfT">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="0YW-4f-AI2">
                             <connections>
-                                <action selector="editButton:" destination="rnW-LL-iBi" id="xJD-Vj-uCx"/>
+                                <segue destination="fnB-Hx-KI8" kind="showDetail" identifier="editSegue" id="ZNp-oc-Jlv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hix-jd-5Xi">
                             <connections>
-                                <segue destination="fnB-Hx-KI8" kind="showDetail" id="LnK-QG-gcK"/>
+                                <segue destination="fnB-Hx-KI8" kind="showDetail" identifier="addSegue" id="LnK-QG-gcK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -152,6 +152,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="navAdd" destination="L4q-Qx-vLE" id="liq-hL-rm0"/>
                         <outlet property="saveButton" destination="9bm-pU-Wha" id="zcs-lF-kWE"/>
                         <outlet property="timePicker" destination="G00-pQ-R2B" id="IZ5-sc-4Y3"/>
                     </connections>
@@ -233,6 +234,9 @@
             <point key="canvasLocation" x="-420" y="-399"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZNp-oc-Jlv"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="clock.fill" catalog="system" width="128" height="121"/>
     </resources>

@@ -24,6 +24,7 @@
 		FB41122824A5E17000780502 /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41122724A5E17000780502 /* AddAlarmViewController.swift */; };
 		FB41122E24A645B500780502 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB41122C24A645B500780502 /* Model.xcdatamodeld */; };
 		FB41125324A711C200780502 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41125224A711C200780502 /* DataManager.swift */; };
+		FB92016324A7960000B26284 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FB92016224A7960000B26284 /* AppIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		FB41122A24A643B200780502 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		FB41122D24A645B500780502 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FB41125224A711C200780502 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		FB92016224A7960000B26284 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon.png; path = ../../../../Downloads/AppIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		FB41121424A52E3000780502 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FB92016224A7960000B26284 /* AppIcon.png */,
 				FB41121724A536C800780502 /* WorldClock.png */,
 				FB41121A24A536D600780502 /* StopWatch.png */,
 				FB41121924A536D600780502 /* Timer.png */,
@@ -208,6 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB92016324A7960000B26284 /* AppIcon.png in Resources */,
 				FB41120924A52DC400780502 /* LaunchScreen.storyboard in Resources */,
 				FB41121C24A536D600780502 /* StopWatch.png in Resources */,
 				FB41121624A536BD00780502 /* Alarm.png in Resources */,
@@ -381,7 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U9EGC55R6Z;
 				INFOPLIST_FILE = Alarm/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -400,7 +404,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U9EGC55R6Z;
 				INFOPLIST_FILE = Alarm/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
