@@ -14,6 +14,7 @@ class AddAlarmViewController: UIViewController {
     var allAlarm = AlarmData()
     var alarms: [NSManagedObject] = []
     var titleNav: String = ""
+    var objectEdit: NSManagedObject = NSManagedObject()
 
     @IBOutlet var navAdd: UINavigationItem!
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
@@ -23,10 +24,20 @@ class AddAlarmViewController: UIViewController {
         let selectedDate: String = dateFormater.string(from: timePicker.date)
         let type = "Alarm"
         let active = false
-        self.save(time: selectedDate, type: type, active: active)
-        DataManager.shared.firstVC.loadData()
-        DataManager.shared.firstVC.tableView.reloadData()
-        self.dismiss(animated: true, completion: nil)
+        if (titleNav == "Add Alarm") {
+            self.addData(time: selectedDate, type: type, active: active)
+            DataManager.shared.firstVC.loadData()
+            DataManager.shared.firstVC.tableView.reloadData()
+            self.dismiss(animated: true, completion: nil)
+        }
+        else if (titleNav == "Edit Alarm") {
+            self.updateData(time: selectedDate, type: type, active: active, object: objectEdit)
+            DataManager.shared.firstVC.loadData()
+            DataManager.shared.firstVC.tableView.reloadData()
+            self.dismiss(animated: true, completion: nil)
+            
+        }
+        
         
         
     }
@@ -38,6 +49,7 @@ class AddAlarmViewController: UIViewController {
         dateFormater.timeStyle = .short
         navAdd.title = titleNav
         
+        
         //let selectedDate: String = dateFormater.string(from: timePicker.calendar)
         // Do any additional setup after loading the view.
     }
@@ -46,11 +58,7 @@ class AddAlarmViewController: UIViewController {
         
         
     }
-    func editShow()
-    {
-        navAdd.title = "abc"
-    }
-    func save(time: String, type: String, active: Bool) {
+    func addData(time: String, type: String, active: Bool) {
       
       guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
         else {
@@ -79,6 +87,30 @@ class AddAlarmViewController: UIViewController {
       }
     }
     
+    func updateData(time: String, type: String, active: Bool, object: NSManagedObject) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Alarm")
+        do {
+            let tasks = try managedObjectContext.fetch(fetchRequest)
+            for data in tasks {
+                if (data == object) {
+                    data.setValue(time, forKey: "time")
+                    data.setValue(type, forKey: "type")
+                    data.setValue(active, forKey: "active")
+                    
+                }
+            }
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        }
+        catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
 
     /*
     // MARK: - Navigation

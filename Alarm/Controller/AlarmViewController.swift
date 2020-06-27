@@ -12,21 +12,12 @@ import CoreData
 class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var alarms: [NSManagedObject] = []
+    var editAlarm: NSManagedObject = NSManagedObject()
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarms.count
     }
     
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if (segue.identifier == "editSegue") {
-        let vc = segue.destination as! AddAlarmViewController
-        vc.titleNav = "Edit Alarm"
-     }
-    if (segue.identifier == "addSegue") {
-       let vc = segue.destination as! AddAlarmViewController
-       vc.titleNav = "Add Alarm"
-    }
 
- }
     
     @IBAction func changedSwitch(_ sender: Any) {
         guard let cell = (sender as AnyObject).superview?.superview as? AlarmTableViewCell else {
@@ -46,13 +37,14 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        editAlarm = alarms[indexPath.row]
+        self.performSegue(withIdentifier: "editSegue", sender: nil)
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, actionPerformed) in
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let AddAlarmViewController = storyBoard.instantiateViewController(withIdentifier: "AddAlarm") as! AddAlarmViewController
-            self.present(AddAlarmViewController, animated:true, completion:nil)
+            self.editAlarm = self.alarms[indexPath.row]
+            self.performSegue(withIdentifier: "editSegue", sender: nil)
         }
          
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, actionPerformed) in
@@ -142,10 +134,20 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     override func viewWillAppear(_ animated: Bool)
     {
-        super.viewWillAppear(animated)
-        //1
+        super.viewWillAppear(animated)        //1
         loadData()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "editSegue") {
+            let vc = segue.destination as! AddAlarmViewController
+            vc.titleNav = "Edit Alarm"
+            vc.objectEdit = editAlarm
+        }
+       if (segue.identifier == "addSegue") {
+          let vc = segue.destination as! AddAlarmViewController
+          vc.titleNav = "Add Alarm"
+       }
 
+    }
 
 }
