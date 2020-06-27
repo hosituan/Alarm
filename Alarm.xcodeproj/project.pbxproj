@@ -22,7 +22,8 @@
 		FB41122424A5CC2200780502 /* AlarmItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41122324A5CC2200780502 /* AlarmItem.swift */; };
 		FB41122624A5CEF400780502 /* AlarmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41122524A5CEF400780502 /* AlarmData.swift */; };
 		FB41122824A5E17000780502 /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41122724A5E17000780502 /* AddAlarmViewController.swift */; };
-		FB41122B24A643B200780502 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FB41122A24A643B200780502 /* libsqlite3.0.tbd */; };
+		FB41122E24A645B500780502 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB41122C24A645B500780502 /* Model.xcdatamodeld */; };
+		FB41125324A711C200780502 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB41125224A711C200780502 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		FB41122524A5CEF400780502 /* AlarmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmData.swift; sourceTree = "<group>"; };
 		FB41122724A5E17000780502 /* AddAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		FB41122A24A643B200780502 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		FB41122D24A645B500780502 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		FB41125224A711C200780502 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +54,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB41122B24A643B200780502 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +86,7 @@
 				FB41121124A52E0400780502 /* View */,
 				FB41121024A52DFA00780502 /* AppDelegate */,
 				FB41120A24A52DC400780502 /* Info.plist */,
+				FB41122C24A645B500780502 /* Model.xcdatamodeld */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -122,6 +125,7 @@
 			children = (
 				FB41122324A5CC2200780502 /* AlarmItem.swift */,
 				FB41122524A5CEF400780502 /* AlarmData.swift */,
+				FB41125224A711C200780502 /* DataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,10 +226,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB41122424A5CC2200780502 /* AlarmItem.swift in Sources */,
+				FB41125324A711C200780502 /* DataManager.swift in Sources */,
 				FB41122024A542C400780502 /* AlarmTableViewCell.swift in Sources */,
 				FB41121E24A53DCD00780502 /* AlarmViewController.swift in Sources */,
 				FB41120124A52DC200780502 /* ViewController.swift in Sources */,
 				FB41122824A5E17000780502 /* AddAlarmViewController.swift in Sources */,
+				FB41122E24A645B500780502 /* Model.xcdatamodeld in Sources */,
 				FB4111FD24A52DC200780502 /* AppDelegate.swift in Sources */,
 				FB4111FF24A52DC200780502 /* SceneDelegate.swift in Sources */,
 				FB41122624A5CEF400780502 /* AlarmData.swift in Sources */,
@@ -424,6 +430,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FB41122C24A645B500780502 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FB41122D24A645B500780502 /* Model.xcdatamodel */,
+			);
+			currentVersion = FB41122D24A645B500780502 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FB4111F124A52DC200780502 /* Project object */;
 }

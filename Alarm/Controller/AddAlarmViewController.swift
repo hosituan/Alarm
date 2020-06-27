@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
 class AddAlarmViewController: UIViewController {
     let dateFormater: DateFormatter = DateFormatter()
     var allAlarm = AlarmData()
+    var alarms: [NSManagedObject] = []
 
+    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
         let selectedDate: String = dateFormater.string(from: timePicker.date)
         let type = "Alarm"
-        let actiave = true
-        allAlarm.list.append(AlarmItem(alarmTime: selectedDate, alarmType: type, activeStatus: actiave))
+        let active = false
+        self.save(time: selectedDate, type: type, active: active)
+        DataManager.shared.firstVC.viewWillAppear(true)
+        DataManager.shared.firstVC.tableView.reloadData()
+        self.dismiss(animated: true, completion: nil)
         
     }
     @IBOutlet var timePicker: UIDatePicker!
@@ -25,8 +33,42 @@ class AddAlarmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dateFormater.timeStyle = .short
+        
         //let selectedDate: String = dateFormater.string(from: timePicker.calendar)
         // Do any additional setup after loading the view.
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
+    func save(time: String, type: String, active: Bool) {
+      
+      guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else {
+            return
+      }
+      // 1
+      let managedContext =
+        appDelegate.persistentContainer.viewContext
+      
+      // 2
+        let entity = NSEntityDescription.entity(forEntityName: "Alarm", in: managedContext)!
+      
+        let alarm = NSManagedObject(entity: entity, insertInto: managedContext)
+      
+      // 3
+        alarm.setValue(time, forKeyPath: "time")
+        alarm.setValue(type, forKeyPath: "type")
+        alarm.setValue(active, forKeyPath: "active")
+      
+      // 4
+      do {
+        try managedContext.save()
+        alarms.append(alarm)
+      }
+      catch let error as NSError {
+        print("Could not save. \(error), \(error.userInfo)")
+      }
     }
     
 

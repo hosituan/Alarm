@@ -40,6 +40,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whl-T9-gkU">
                                                     <rect key="frame" x="327" y="35" width="49" height="31"/>
+                                                    <connections>
+                                                        <action selector="changedSwitch:" destination="rnW-LL-iBi" eventType="valueChanged" id="pf7-m7-2fN"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -62,6 +65,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ZWM-Pt-TC6" firstAttribute="leading" secondItem="nXi-x9-e8i" secondAttribute="leading" id="3Sy-YZ-FYh"/>
                             <constraint firstItem="ZWM-Pt-TC6" firstAttribute="top" secondItem="nXi-x9-e8i" secondAttribute="top" id="BcB-nh-9rh"/>
@@ -69,12 +73,19 @@
                             <constraint firstItem="ZWM-Pt-TC6" firstAttribute="centerX" secondItem="bhD-g6-x1K" secondAttribute="centerX" id="nsz-HH-xO8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nXi-x9-e8i"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="JL4-iZ-syX" appends="YES" id="ziC-EO-nXo"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="HlW-pJ-VfT">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="0YW-4f-AI2"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="0YW-4f-AI2">
+                            <connections>
+                                <action selector="editButton:" destination="rnW-LL-iBi" id="xJD-Vj-uCx"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hix-jd-5Xi">
                             <connections>
-                                <segue destination="fnB-Hx-KI8" kind="modal" id="LnK-QG-gcK"/>
+                                <segue destination="fnB-Hx-KI8" kind="showDetail" id="LnK-QG-gcK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -83,6 +94,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OfQ-az-hSp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="JL4-iZ-syX"/>
             </objects>
             <point key="canvasLocation" x="466.66666666666669" y="-389.0625"/>
         </scene>
@@ -91,17 +103,21 @@
             <objects>
                 <viewController id="fnB-Hx-KI8" userLabel="Add Alarm" customClass="AddAlarmViewController" customModule="Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nob-Nk-r7N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqx-aC-azx">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Px5-tM-4gp"/>
                                 </constraints>
                                 <items>
                                     <navigationItem title="Add Alarm" id="L4q-Qx-vLE">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="sfJ-sV-SmJ"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="sfJ-sV-SmJ">
+                                            <connections>
+                                                <action selector="cancelButton:" destination="fnB-Hx-KI8" id="uKq-oM-vaK"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="9bm-pU-Wha">
                                             <connections>
                                                 <action selector="saveButton:" destination="fnB-Hx-KI8" id="QC1-Qs-MpW"/>
@@ -111,13 +127,13 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDn-2T-vx5">
-                                <rect key="frame" x="183.5" y="94" width="47" height="24"/>
+                                <rect key="frame" x="183.5" y="182" width="47" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="G00-pQ-R2B">
-                                <rect key="frame" x="47" y="158" width="320" height="216"/>
+                                <rect key="frame" x="47" y="246" width="320" height="216"/>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -134,10 +150,6 @@
                         <viewLayoutGuide key="safeArea" id="9Ri-de-fdV"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="abc" id="aLL-Xh-h0S">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="s82-fP-9Wq"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0Sr-xq-BB4"/>
-                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="saveButton" destination="9bm-pU-Wha" id="zcs-lF-kWE"/>
