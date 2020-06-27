@@ -25,9 +25,8 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
 
         let indexPath = tableView.indexPath(for: cell)
-        print(indexPath!.row)
         let alarm = alarms[indexPath!.row]
-        updateData(time: alarm.value(forKey: "time") as! String, type: alarm.value(forKey: "type") as! String, active: cell.statusSwitch.isOn )
+        updateData(time: alarm.value(forKey: "time") as! String, type: alarm.value(forKey: "type") as! String, active: cell.statusSwitch.isOn, object: alarm)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let alarm = alarms[indexPath.row]
@@ -38,11 +37,6 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alarm = alarms[indexPath.row]
-        self.deleteData(object: alarm)
-        loadData()
-        tableView.reloadData()
-        
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -84,33 +78,28 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.reloadData()
     }
     
-    func updateData(time: String, type: String, active: Bool) {
-      
-      guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        else {
-            return
-      }
-      // 1
-      let managedContext = appDelegate.persistentContainer.viewContext
-      
-      // 2
-        let entity = NSEntityDescription.entity(forEntityName: "Alarm", in: managedContext)!
-      
-        let alarm = NSManagedObject(entity: entity, insertInto: managedContext)
-      
-      // 3
-        alarm.setValue(time, forKey: "time")
-        alarm.setValue(type, forKey: "type")
-        alarm.setValue(active, forKey: "active")
-      
-      // 4
-      do {
-        try managedContext.save()
-        alarms.append(alarm)
-      }
-      catch let error as NSError {
-        print("Could not update. \(error), \(error.userInfo)")
-      }
+    func updateData(time: String, type: String, active: Bool, object: NSManagedObject) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Alarm")
+        do {
+            let tasks = try managedObjectContext.fetch(fetchRequest)
+            for data in tasks {
+                if (data == object) {
+                    data.setValue(active, forKey: "active")
+                }
+            }
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        }
+        catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        self.loadData()
+        self.tableView.reloadData()
     }
     func loadData()
     {
@@ -118,18 +107,19 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
           UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        
         let managedContext =
           appDelegate.persistentContainer.viewContext
-        
-        //2
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Alarm")
-        
-        //3
+        //let fetchSort = NSFetchRequest<NSFetchRequestResult>(entityName: "Alarm")
+
+        // Add Sort Descriptor
+        //let sortDescriptor = NSSortDescriptor(key: "time", ascending:true)
+        //fetchSort.sortDescriptors = [sortDescriptor]
         do {
-          alarms = try managedContext.fetch(fetchRequest)
+            alarms  = try managedContext.fetch(fetchRequest)
+            //alarms = try managedContext.fetch(fetchSort) as! [NSManagedObject]
         } catch let error as NSError {
-          print("Could not fetch. \(error), \(error.userInfo)")
+            print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
 
