@@ -22,7 +22,7 @@ class AddAlarmViewController: UIViewController {
         let type = "Alarm"
         let active = false
         self.save(time: selectedDate, type: type, active: active)
-        DataManager.shared.firstVC.viewWillAppear(true)
+        DataManager.shared.firstVC.loadData()
         DataManager.shared.firstVC.tableView.reloadData()
         self.dismiss(animated: true, completion: nil)
         
@@ -48,8 +48,7 @@ class AddAlarmViewController: UIViewController {
             return
       }
       // 1
-      let managedContext =
-        appDelegate.persistentContainer.viewContext
+      let managedContext = appDelegate.persistentContainer.viewContext
       
       // 2
         let entity = NSEntityDescription.entity(forEntityName: "Alarm", in: managedContext)!

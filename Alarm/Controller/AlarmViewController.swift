@@ -17,8 +17,6 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func editButton(_ sender: UIBarButtonItem) {
-        viewWillAppear(true)
-        self.tableView.reloadData()
     }
     
     @IBAction func changedSwitch(_ sender: Any) {
@@ -29,7 +27,7 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let indexPath = tableView.indexPath(for: cell)
         print(indexPath!.row)
         let alarm = alarms[indexPath!.row]
-        updateData(time: alarm.value(forKeyPath: "time") as! String, type: alarm.value(forKeyPath: "type") as! String, active: cell.statusSwitch.isOn )
+        updateData(time: alarm.value(forKey: "time") as! String, type: alarm.value(forKey: "type") as! String, active: cell.statusSwitch.isOn )
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let alarm = alarms[indexPath.row]
@@ -41,37 +39,97 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alarm = alarms[indexPath.row]
-        let alert = UIAlertController(title: "Message", message: "\(String(describing: alarm.value(forKeyPath: "time"))),\(String(describing: alarm.value(forKeyPath: "type"))), \(String(describing: alarm.value(forKeyPath: "active")))", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
+        self.deleteData(object: alarm)
+        loadData()
+        tableView.reloadData()
         
     }
 
-    func tableView(_ tableView: UITableView, UIContextualAction indexPath: IndexPath) {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, actionPerformed) in
-            //self.mainArray.remove(at: indexPath.row)
-            //self.tableData.deleteRows(at: [indexPath], with: .fade)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, actionPerformed) in
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let AddAlarmViewController = storyBoard.instantiateViewController(withIdentifier: "AddAlarm") as! AddAlarmViewController
+            self.present(AddAlarmViewController, animated:true, completion:nil)
         }
+         
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, actionPerformed) in
+            let alarm = self.alarms[indexPath.row]
+            self.deleteData(object: alarm)
+        }
+         
+        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+    }
+    func deleteData(object: NSManagedObject)
+    {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Alarm")
+        do {
+            let tasks = try managedObjectContext.fetch(fetchRequest)
+            for data in tasks {
+                if (data == object) {
+                    managedObjectContext.delete(data)
+                }
+            }
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        }
+        catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        self.loadData()
+        self.tableView.reloadData()
     }
     
     func updateData(time: String, type: String, active: Bool) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return
+      
+      guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else {
+            return
+      }
+      // 1
+      let managedContext = appDelegate.persistentContainer.viewContext
+      
+      // 2
+        let entity = NSEntityDescription.entity(forEntityName: "Alarm", in: managedContext)!
+      
+        let alarm = NSManagedObject(entity: entity, insertInto: managedContext)
+      
+      // 3
+        alarm.setValue(time, forKey: "time")
+        alarm.setValue(type, forKey: "type")
+        alarm.setValue(active, forKey: "active")
+      
+      // 4
+      do {
+        try managedContext.save()
+        alarms.append(alarm)
+      }
+      catch let error as NSError {
+        print("Could not update. \(error), \(error.userInfo)")
+      }
+    }
+    func loadData()
+    {
+        guard let appDelegate =
+          UIApplication.shared.delegate as? AppDelegate else {
+            return
         }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "Alarm")
-        fetchRequest.predicate = NSPredicate(format: "time", time)
+        
+        let managedContext =
+          appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Alarm")
+        
+        //3
         do {
-            let update = try! managedContext.fetch(fetchRequest)
-            let objectUpdate = update[0] as! NSManagedObject
-            objectUpdate.setValue(type, forKey: "type")
-            objectUpdate.setValue(active, forKey: "active")
-            do {
-                try managedContext.save()
-            }
-            catch {
-                print(error)
-            }
+          alarms = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+          print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
 
@@ -83,26 +141,11 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
         DataManager.shared.firstVC = self
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-      //1
-      guard let appDelegate =
-        UIApplication.shared.delegate as? AppDelegate else {
-          return
-      }
-      
-      let managedContext =
-        appDelegate.persistentContainer.viewContext
-      
-      //2
-      let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Alarm")
-      
-      //3
-      do {
-        alarms = try managedContext.fetch(fetchRequest)
-      } catch let error as NSError {
-        print("Could not fetch. \(error), \(error.userInfo)")
-      }
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        //1
+        loadData()
     }
 
 
