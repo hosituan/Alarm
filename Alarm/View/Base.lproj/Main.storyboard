@@ -75,12 +75,13 @@
                         <viewLayoutGuide key="safeArea" id="nXi-x9-e8i"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="JL4-iZ-syX" appends="YES" id="ziC-EO-nXo"/>
+                            <outletCollection property="gestureRecognizers" destination="Ntw-nR-tOK" appends="YES" id="x8t-nc-C7J"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Alarm" id="HlW-pJ-VfT">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hix-jd-5Xi">
                             <connections>
-                                <segue destination="fnB-Hx-KI8" kind="showDetail" identifier="addSegue" id="LnK-QG-gcK"/>
+                                <segue destination="fnB-Hx-KI8" kind="showDetail" identifier="addSegue" id="6Ki-pz-Fqn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -90,6 +91,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OfQ-az-hSp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="JL4-iZ-syX"/>
+                <tapGestureRecognizer id="Ntw-nR-tOK">
+                    <connections>
+                        <segue destination="fnB-Hx-KI8" kind="showDetail" identifier="editSegue" id="Sq2-G5-G34"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1376.8115942028987" y="-389.0625"/>
         </scene>
@@ -272,6 +278,9 @@
             <point key="canvasLocation" x="-1417.3913043478262" y="-399.10714285714283"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Sq2-G5-G34"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Alarm.png" width="128" height="128"/>
         <image name="StopWatch.png" width="128" height="128"/>

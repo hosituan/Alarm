@@ -38,7 +38,7 @@ class AlarmViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         editAlarm = alarms[indexPath.row]
-        self.performSegue(withIdentifier: "editSegue", sender: nil)
+        //self.performSegue(withIdentifier: "editSegue", sender: nil)
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
